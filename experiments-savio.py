@@ -6,6 +6,7 @@ import scipy.optimize as opt
 from time import perf_counter
 import scipy.special as sp
 import datetime
+import logging
 
 # internal imports
 from cfun import KernelCfun, PolyCfun
@@ -33,10 +34,10 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
     total_start = perf_counter()
     i = 0
     epsilon_current=1
-    print('iter, nsamps, kldiv, eps, time (s)')
+    logging.info('iter, nsamps, kldiv, eps, time (s)')
     while epsilon_current >= epsilon_target and i*batchsize <= maxsamps:
         iter_time_start = perf_counter()
-        #print('Computing samples')
+        #logging.info('Computing samples')
         if i == 0:
             new_samples_raw = sampler(initialsamps)
         else:
@@ -52,19 +53,19 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
 
         iter_time_stop = perf_counter()
         iter_time = (iter_time_stop - iter_time_start)
-        print('{:d}, {:d}, {:.5g},{:.3g},{:.5g}'.format(i, cfun.nsamps, cfun.kl_divergence, epsilon_current, iter_time))
+        logging.info('{:d}, {:d}, {:.5g},{:.3g},{:.5g}'.format(i, cfun.nsamps, cfun.kl_divergence, epsilon_current, iter_time))
         i = i + 1
     total_end = perf_counter()
     total_time = (total_end - total_start)
-    print('total computation time: {:.5g} s'.format(total_time))
+    logging.info('total computation time: {:.5g} s'.format(total_time))
     return None
 
 
-def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='exp'):
+def comparison_experiment_local(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10):
 
     targeteps = 0.05
 
-    k=10
+    #k=10
     sig0=1e-3
     nf = int(sp.binom(nx + k, nx))  # number of features (i.e. monomials)
     threshold_poly = nf / targeteps # based on Markov inequality estimate for (1-eps) threshold
@@ -72,12 +73,12 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
 
     threshold_se = 0.25
     noiselevel_se=threshold_se/chi2.isf(.001,df=1)
-    cfun_se = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2)
+    #cfun_se = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2)
 
     cfun_nys = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2, n_nys=10000)
 
 
-    print('squared exponential (Nystrom)')
+    logging.info('squared exponential (Nystrom)')
     pacbayes_cfun_iterative(
         cfun=cfun_nys,
         sampler=sampler,
@@ -87,7 +88,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         maxsamps=100000,
         exact_stochastic_error=False)
 
-    print('polynomial')
+    logging.info('polynomial')
     pacbayes_cfun_iterative(
         cfun=cfun_poly,
         sampler=sampler,
@@ -97,21 +98,21 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         maxsamps=100000,
         exact_stochastic_error=False)
 
-    print('squared exponential (full)')
-    pacbayes_cfun_iterative(
-        cfun=cfun_se,
-        sampler=sampler,
-        epsilon_target=epsilon_target,
-        initialsamps=12000,
-        batchsize=2000,
-        maxsamps=20000,
-        exact_stochastic_error=False)
+    # logging.info('squared exponential (full)')
+    # pacbayes_cfun_iterative(
+    #     cfun=cfun_se,
+    #     sampler=sampler,
+    #     epsilon_target=epsilon_target,
+    #     initialsamps=12000,
+    #     batchsize=2000,
+    #     maxsamps=20000,
+    #     exact_stochastic_error=False)
 
-    print('Plotting data and contour')
+    logging.info('Plotting data and contour')
 
-    xrange, yrange = data_plot_limits(cfun_poly.data_raw)
+    xrange, yrange = data_plot_limits(cfun_poly.data_raw, padfactor=0.15)
 
-    ngrid=20
+    ngrid=100
     gridwidth=3
     xgrid = np.linspace(xrange[0],xrange[1],ngrid)
     ygrid = np.linspace(yrange[0], yrange[1],ngrid)
@@ -126,8 +127,8 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     cfun_poly_evals = cfun_poly.evaluate(xin)
     Z_poly = cfun_poly_evals.reshape(ngrid,ngrid).T
 
-    cfun_se_evals = cfun_se.evaluate(xin)
-    Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
+    #cfun_se_evals = cfun_se.evaluate(xin)
+    #Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
 
     cfun_nys_evals = cfun_nys.evaluate(xin)
     Z_nys = cfun_nys_evals.reshape(ngrid,ngrid).T
@@ -135,34 +136,47 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     plt.clf()
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
     plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
-    plt.contour(X,Y,Z_se, levels=[threshold_se], colors='red', label='SE')
+    #plt.contour(X,Y,Z_se, levels=[threshold_se], colors='red', label='SE')
     plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
 
     current_time = datetime.datetime.now()
     timestr = current_time.strftime('%Y-%m-%d-%H%M')
-    figname = 'results/{:s}_{:s}_cmp.png'.format(timestr, experiment_name)
+    figname = './results/{:s}_{:s}_cmp.png'.format(timestr, experiment_name)
     plt.savefig(figname, dpi=300)
 
 
-epsilon_target = 0.8
+# configure logging
+current_time = datetime.datetime.now()
+timestr = current_time.strftime('%Y-%m-%d-%H%M')
+logging.basicConfig(
+        handlers=[
+            logging.FileHandler("./results/{:s}-experiments-savio.log".format(timestr)),
+            logging.StreamHandler()
+        ],
+        format='%(asctime)s: %(message)s',
+        level=logging.INFO)
 
-print('Experiment #1: Duffing oscillator')
-comparison_experiment(sampler=sample_oscillator_n,
+epsilon_target = 0.05
+
+logging.info('Experiment #1: Duffing oscillator')
+comparison_experiment_local(sampler=sample_oscillator_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
         experiment_name='duffing')
 
-print('Experiment #2: Quadrotor (x,h)')
-comparison_experiment(sampler=sample_quadrotor_xh_n,
+logging.info('Experiment #2: Quadrotor (x,h)')
+comparison_experiment_local(sampler=sample_quadrotor_xh_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
-        experiment_name='quadrotor')
+        experiment_name='quadrotor', k=4)
 
-print('Experiment #3: Traffic (last 2)')
-comparison_experiment(sampler=sample_traffic_end_n,
+logging.info('Experiment #3: Traffic (last 2)')
+comparison_experiment_local(sampler=sample_traffic_end_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
         experiment_name='traffic')
+
+

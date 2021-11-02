@@ -1,0 +1,50 @@
+2021-11-02 12:17:47,629: Experiment #1: Duffing oscillator
+2021-11-02 12:17:47,630: squared exponential (Nystrom)
+2021-11-02 12:17:47,630: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 12:18:42,107: 0, 12000, 722.78,0.0963,54.476
+2021-11-02 12:19:27,434: 1, 16000, 773.39,0.0788,45.325
+2021-11-02 12:20:15,492: 2, 20000, 813.6,0.0674,48.056
+2021-11-02 12:21:07,007: 3, 24000, 846.34,0.0592,51.512
+2021-11-02 12:22:02,126: 4, 28000, 876.85,0.0533,55.118
+2021-11-02 12:23:00,622: 5, 32000, 902.72,0.0486,58.495
+2021-11-02 12:23:00,624: total computation time: 312.99 s
+2021-11-02 12:23:00,624: polynomial
+2021-11-02 12:23:00,624: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 12:23:04,465: 0, 2000, 166.36,0.151,3.841
+2021-11-02 12:23:06,451: 1, 3000, 165.88,0.107,1.9853
+2021-11-02 12:23:08,517: 2, 4000, 165.86,0.0845,2.0645
+2021-11-02 12:23:10,629: 3, 5000, 166.32,0.07,2.1113
+2021-11-02 12:23:12,685: 4, 6000, 167.09,0.0611,2.0544
+2021-11-02 12:23:14,888: 5, 7000, 167.15,0.054,2.2023
+2021-11-02 12:23:17,061: 6, 8000, 167.23,0.0487,2.1727
+2021-11-02 12:23:17,062: total computation time: 16.438 s
+2021-11-02 12:23:17,062: squared exponential (full)
+2021-11-02 12:23:17,062: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 12:24:02,112: 0, 12000, 720.1,0.096,45.05
+2021-11-02 12:24:37,423: 1, 14000, 747.05,0.0862,35.309
+2021-11-02 12:25:24,121: 2, 16000, 771.04,0.0786,46.697
+2021-11-02 12:26:23,579: 3, 18000, 792.63,0.0724,59.457
+2021-11-02 12:27:37,574: 4, 20000, 811.89,0.0673,73.992
+2021-11-02 12:29:11,184: 5, 22000, 829.91,0.0629,93.609
+2021-11-02 12:31:08,231: 6, 24000, 846.29,0.0592,117.05
+2021-11-02 12:33:30,608: 7, 26000, 860.9,0.056,142.37
+2021-11-02 12:36:26,937: 8, 28000, 875.01,0.0532,176.31
+Traceback (most recent call last):
+  File "experiments-savio.py", line 166, in <module>
+    experiment_name='duffing')
+  File "experiments-savio.py", line 109, in comparison_experiment_local
+    exact_stochastic_error=False)
+  File "experiments-savio.py", line 50, in pacbayes_cfun_iterative
+    epsilon_current = cfun.epsilon_pacbayes(exact_stochastic_error=exact_stochastic_error)
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 117, in epsilon_pacbayes
+    kl = self.compute_kl_divergence()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 65, in compute_kl_divergence
+    kl = self.compute_kl_divergence_full()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 87, in compute_kl_divergence_full
+    kmat = np.matrix(self.kfun(self.data, self.data))
+  File "/global/home/users/alex_devonport/devonport_christoffel/kernels.py", line 10, in kfun_se
+    return np.exp(-np.linalg.norm(xs[:,np.newaxis]-ys, axis=-1)**2/(2*sig**2))
+  File "<__array_function__ internals>", line 6, in norm
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/site-packages/numpy/linalg/linalg.py", line 2513, in norm
+    return sqrt(add.reduce(s, axis=axis, keepdims=keepdims))
+MemoryError: Unable to allocate array with shape (30000, 30000) and data type float64

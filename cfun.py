@@ -162,7 +162,7 @@ class KernelCfun:
         return cfun_evals
 
 
-    def evaluate_nys(self, xin, kmm_perturbation=1e-6):
+    def evaluate_nys(self, xin, kmm_perturbation=1e-3):
         xindim = np.shape(xin)[0]
         kmm = self.kfun(self.data[:self.n_nys, :], self.data[:self.n_nys, :])
         kmm = kmm + kmm_perturbation*np.eye(self.n_nys)
