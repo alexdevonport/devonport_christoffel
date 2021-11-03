@@ -73,7 +73,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
 
     threshold_se = 0.25
     noiselevel_se=threshold_se/chi2.isf(.001,df=1)
-    #cfun_se = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2)
+    cfun_se = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2)
 
     cfun_nys = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2, n_nys=10000)
 

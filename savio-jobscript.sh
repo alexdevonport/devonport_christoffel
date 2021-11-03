@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=christoffel
 #SBATCH --account=fc_control
-#SBATCH --partition=savio2
-#SBATCH --nodes=2
+#SBATCH --partition=savio3_bigmem
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --cpus-per-task=1
-#SBATCH --time=01:30:00 
+#SBATCH --time=03:00:00 
 #SBATCH --output=cfun-pacbayes-nys-log.txt
 #SBATCH --output=test_job_%j.out
 #SBATCH --error=test_job_%j.err
