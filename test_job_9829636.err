@@ -1,0 +1,66 @@
+2021-11-03 10:45:37,780: Experiment #1: Duffing oscillator
+2021-11-03 10:45:37,782: squared exponential (Nystrom)
+2021-11-03 10:45:37,782: iter, nsamps, kldiv, eps, time (s)
+2021-11-03 10:46:15,032: 0, 12000, 554.05,0.0766,37.25
+2021-11-03 10:46:45,682: 1, 16000, 590.58,0.0625,30.649
+2021-11-03 10:47:19,500: 2, 20000, 621.03,0.0535,33.817
+2021-11-03 10:47:55,962: 3, 24000, 645.89,0.0471,36.46
+2021-11-03 10:47:55,963: total computation time: 138.18 s
+2021-11-03 10:47:55,963: polynomial
+2021-11-03 10:47:55,963: iter, nsamps, kldiv, eps, time (s)
+2021-11-03 10:47:58,120: 0, 2000, 164.84,0.152,2.157
+2021-11-03 10:47:59,404: 1, 3000, 167.07,0.109,1.2831
+2021-11-03 10:48:00,654: 2, 4000, 168.75,0.0872,1.2487
+2021-11-03 10:48:01,867: 3, 5000, 168.72,0.0727,1.2113
+2021-11-03 10:48:03,230: 4, 6000, 168.66,0.0628,1.3619
+2021-11-03 10:48:04,514: 5, 7000, 167.8,0.0553,1.2826
+2021-11-03 10:48:05,861: 6, 8000, 168.05,0.0499,1.3462
+2021-11-03 10:48:05,862: total computation time: 9.8988 s
+2021-11-03 10:48:05,862: Plotting data and contour
+experiments-savio.py:138: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:140: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
+2021-11-03 10:52:52,783: Experiment #2: Quadrotor (x,h)
+2021-11-03 10:52:52,784: squared exponential (Nystrom)
+2021-11-03 10:52:52,784: iter, nsamps, kldiv, eps, time (s)
+2021-11-03 10:53:20,421: 0, 12000, 693.05,0.0928,27.637
+2021-11-03 10:53:50,016: 1, 16000, 742.58,0.076,29.592
+2021-11-03 10:54:24,989: 2, 20000, 785.95,0.0654,34.965
+2021-11-03 10:55:00,424: 3, 24000, 820.84,0.0577,35.423
+2021-11-03 10:55:38,752: 4, 28000, 848.37,0.0518,38.326
+2021-11-03 10:56:19,216: 5, 32000, 873.68,0.0472,40.462
+2021-11-03 10:56:19,218: total computation time: 206.43 s
+2021-11-03 10:56:19,219: polynomial
+2021-11-03 10:56:19,219: iter, nsamps, kldiv, eps, time (s)
+2021-11-03 10:56:20,162: 0, 2000, 42.377,0.0668,0.9418
+2021-11-03 10:56:20,766: 1, 3000, 42.518,0.0487,0.60022
+2021-11-03 10:56:20,767: total computation time: 1.5479 s
+2021-11-03 10:56:20,767: Plotting data and contour
+experiments-savio.py:138: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:140: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
+2021-11-03 11:02:20,879: Experiment #3: Traffic (last 2)
+2021-11-03 11:02:20,881: squared exponential (Nystrom)
+2021-11-03 11:02:20,881: iter, nsamps, kldiv, eps, time (s)
+2021-11-03 11:02:50,333: 0, 12000, 616.61,0.0839,29.451
+2021-11-03 11:03:21,407: 1, 16000, 657.6,0.0685,31.064
+2021-11-03 11:03:54,485: 2, 20000, 689.38,0.0585,33.067
+2021-11-03 11:04:30,477: 3, 24000, 717.98,0.0515,35.99
+2021-11-03 11:05:09,746: 4, 28000, 741.56,0.0462,39.265
+2021-11-03 11:05:09,752: total computation time: 168.87 s
+2021-11-03 11:05:09,753: polynomial
+2021-11-03 11:05:09,753: iter, nsamps, kldiv, eps, time (s)
+2021-11-03 11:05:11,083: 0, 2000, 147.11,0.135,1.3291
+2021-11-03 11:05:11,945: 1, 3000, 147.82,0.0949,0.861
+2021-11-03 11:05:12,980: 2, 4000, 150.46,0.0752,1.0338
+2021-11-03 11:05:14,093: 3, 5000, 150.53,0.0623,1.1113
+2021-11-03 11:05:15,041: 4, 6000, 150.01,0.0534,0.94679
+2021-11-03 11:05:16,101: 5, 7000, 150.4,0.0471,1.059
+2021-11-03 11:05:16,102: total computation time: 6.3486 s
+2021-11-03 11:05:16,102: Plotting data and contour
+experiments-savio.py:138: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:140: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')

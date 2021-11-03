@@ -1,0 +1,58 @@
+2021-11-02 16:11:41,689: Experiment #1: Duffing oscillator
+2021-11-02 16:11:41,690: squared exponential (Nystrom)
+2021-11-02 16:11:41,690: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 16:12:19,062: 0, 12000, 386.09,0.0566,37.371
+2021-11-02 16:12:51,093: 1, 16000, 412.17,0.0463,32.028
+2021-11-02 16:12:51,095: total computation time: 69.405 s
+2021-11-02 16:12:51,095: polynomial
+2021-11-02 16:12:51,095: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 16:12:53,158: 0, 2000, 167.27,0.153,2.0623
+2021-11-02 16:12:54,331: 1, 3000, 166.01,0.107,1.1726
+2021-11-02 16:12:55,584: 2, 4000, 165.28,0.0844,1.2519
+2021-11-02 16:12:56,786: 3, 5000, 165.52,0.0704,1.2008
+2021-11-02 16:12:58,051: 4, 6000, 165.62,0.061,1.2636
+2021-11-02 16:12:59,319: 5, 7000, 165.99,0.0541,1.2667
+2021-11-02 16:13:00,560: 6, 8000, 165.39,0.0483,1.2356
+2021-11-02 16:13:00,566: total computation time: 9.4706 s
+2021-11-02 16:13:00,566: Plotting data and contour
+experiments-savio.py:138: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:140: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
+2021-11-02 16:16:42,994: Experiment #2: Quadrotor (x,h)
+2021-11-02 16:16:42,995: squared exponential (Nystrom)
+2021-11-02 16:16:42,996: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 16:17:11,381: 0, 12000, 460.77,0.0655,28.382
+2021-11-02 16:17:40,926: 1, 16000, 493.05,0.0537,29.539
+2021-11-02 16:18:13,957: 2, 20000, 516.33,0.0459,33.024
+2021-11-02 16:18:13,968: total computation time: 90.972 s
+2021-11-02 16:18:13,969: polynomial
+2021-11-02 16:18:13,969: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 16:18:14,770: 0, 2000, 42.813,0.0672,0.80058
+2021-11-02 16:18:15,281: 1, 3000, 42.69,0.0494,0.50911
+2021-11-02 16:18:15,281: total computation time: 1.3124 s
+2021-11-02 16:18:15,282: Plotting data and contour
+experiments-savio.py:138: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:140: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
+2021-11-02 16:22:23,618: Experiment #3: Traffic (last 2)
+2021-11-02 16:22:23,623: squared exponential (Nystrom)
+2021-11-02 16:22:23,623: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 16:22:53,648: 0, 12000, 412.02,0.0597,30.017
+2021-11-02 16:23:24,651: 1, 16000, 438.77,0.0488,30.986
+2021-11-02 16:23:24,662: total computation time: 61.039 s
+2021-11-02 16:23:24,662: polynomial
+2021-11-02 16:23:24,662: iter, nsamps, kldiv, eps, time (s)
+2021-11-02 16:23:25,837: 0, 2000, 152.04,0.137,1.1673
+2021-11-02 16:23:26,587: 1, 3000, 152.96,0.0971,0.73962
+2021-11-02 16:23:27,343: 2, 4000, 152.33,0.0757,0.75464
+2021-11-02 16:23:28,175: 3, 5000, 152.57,0.0624,0.83019
+2021-11-02 16:23:28,958: 4, 6000, 152.87,0.0538,0.78223
+2021-11-02 16:23:29,760: 5, 7000, 151.35,0.047,0.8011
+2021-11-02 16:23:29,761: total computation time: 5.0983 s
+2021-11-02 16:23:29,762: Plotting data and contour
+experiments-savio.py:138: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:140: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')

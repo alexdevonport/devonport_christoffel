@@ -110,7 +110,7 @@ def comparison_experiment_local(sampler, nx, epsilon_target, delta, experiment_n
 
     logging.info('Plotting data and contour')
 
-    xrange, yrange = data_plot_limits(cfun_poly.data_raw, padfactor=0.15)
+    xrange, yrange = data_plot_limits(cfun_poly.data_raw, padfactor=0.2)
 
     ngrid=100
     gridwidth=3
