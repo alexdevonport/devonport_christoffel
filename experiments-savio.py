@@ -61,7 +61,7 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
     return None
 
 
-def comparison_experiment_local(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10):
+def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10):
 
     targeteps = 0.05
 
@@ -98,15 +98,15 @@ def comparison_experiment_local(sampler, nx, epsilon_target, delta, experiment_n
         maxsamps=100000,
         exact_stochastic_error=False)
 
-    # logging.info('squared exponential (full)')
-    # pacbayes_cfun_iterative(
-    #     cfun=cfun_se,
-    #     sampler=sampler,
-    #     epsilon_target=epsilon_target,
-    #     initialsamps=12000,
-    #     batchsize=2000,
-    #     maxsamps=20000,
-    #     exact_stochastic_error=False)
+    logging.info('squared exponential (full)')
+    pacbayes_cfun_iterative(
+        cfun=cfun_se,
+        sampler=sampler,
+        epsilon_target=epsilon_target,
+        initialsamps=12000,
+        batchsize=2000,
+        maxsamps=20000,
+        exact_stochastic_error=False)
 
     logging.info('Plotting data and contour')
 
@@ -127,8 +127,8 @@ def comparison_experiment_local(sampler, nx, epsilon_target, delta, experiment_n
     cfun_poly_evals = cfun_poly.evaluate(xin)
     Z_poly = cfun_poly_evals.reshape(ngrid,ngrid).T
 
-    #cfun_se_evals = cfun_se.evaluate(xin)
-    #Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
+    cfun_se_evals = cfun_se.evaluate(xin)
+    Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
 
     cfun_nys_evals = cfun_nys.evaluate(xin)
     Z_nys = cfun_nys_evals.reshape(ngrid,ngrid).T
@@ -136,7 +136,7 @@ def comparison_experiment_local(sampler, nx, epsilon_target, delta, experiment_n
     plt.clf()
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
     plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
-    #plt.contour(X,Y,Z_se, levels=[threshold_se], colors='red', label='SE')
+    plt.contour(X,Y,Z_se, levels=[threshold_se], colors='red', label='SE')
     plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
 
     current_time = datetime.datetime.now()
@@ -159,21 +159,21 @@ logging.basicConfig(
 epsilon_target = 0.05
 
 logging.info('Experiment #1: Duffing oscillator')
-comparison_experiment_local(sampler=sample_oscillator_n,
+comparison_experiment(sampler=sample_oscillator_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
         experiment_name='duffing')
 
 logging.info('Experiment #2: Quadrotor (x,h)')
-comparison_experiment_local(sampler=sample_quadrotor_xh_n,
+comparison_experiment(sampler=sample_quadrotor_xh_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
         experiment_name='quadrotor', k=4)
 
 logging.info('Experiment #3: Traffic (last 2)')
-comparison_experiment_local(sampler=sample_traffic_end_n,
+comparison_experiment(sampler=sample_traffic_end_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
