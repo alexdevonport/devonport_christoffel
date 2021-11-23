@@ -54,6 +54,7 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
         else:
             new_samples_raw = sampler(batchsize)
         cfun.add_data(new_samples_raw)
+        logging.info('done sampling')
         # Bayesian PAC calculations (this is all contained in the KernelCfun class)
         # Try to apply a keyword to use the stochastic error upper bound if
         # possible. If not, just run the method directly.
@@ -87,7 +88,6 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     noiselevel_se=threshold_se/chi2.isf(.001,df=1)
     cfun_se = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2)
 
-    cfun_nys = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2, n_nys=10000)
 
     logging.info('squared exponential (full)')
     pacbayes_cfun_iterative(

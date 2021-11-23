@@ -5,6 +5,7 @@ import scipy.optimize as opt
 import scipy.special as sp
 from sklearn.preprocessing import PolynomialFeatures
 from kernel_eigvals_lanczos import kernel_eigvals_lanczos
+import logging
 
 
 def klber(p,q):
@@ -100,8 +101,10 @@ class KernelCfun:
         return kl
 
     def compute_kl_divergence_lanczos(self):
+        logging.info('entering lanczos')
         evec = kernel_eigvals_lanczos(self.kfun, self.data, self.nx, 
                 evals_frac=self.evals_frac, maxevals=self.maxevals) 
+        logging.info('max & min evals: {:g}, {:g}'.format(evec[0],evec[-1]))
         ld = np.sum(np.log(1+self.noiselevel**(-1)*evec))
         tr = np.sum((1 + self.noiselevel**(-1)*evec)**(-1)) - self.nsamps
         kl = 0.5*(ld + tr)
