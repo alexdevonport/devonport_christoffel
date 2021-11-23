@@ -94,19 +94,9 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         cfun=cfun_se,
         sampler=sampler,
         epsilon_target=epsilon_target,
-        initialsamps=12000,
-        batchsize=2000,
-        maxsamps=20000,
-        exact_stochastic_error=False)
-
-    logging.info('squared exponential (Nystrom)')
-    pacbayes_cfun_iterative(
-        cfun=cfun_nys,
-        sampler=sampler,
-        epsilon_target=epsilon_target,
-        initialsamps=12000,
-        batchsize=4000,
-        maxsamps=100000,
+        initialsamps=30000,
+        batchsize=5000,
+        maxsamps=200000,
         exact_stochastic_error=False)
 
     logging.info('polynomial')
@@ -139,17 +129,36 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
             v = np.array([[xi, yj]])
             xin = np.concatenate((xin, v))
 
+    
+    eval_time_poly_start = perf_counter()
     cfun_poly_evals = cfun_poly.evaluate(xin)
     Z_poly = cfun_poly_evals.reshape(ngrid,ngrid).T
+    eval_time_poly_end = perf_counter()
+    eval_time_poly = eval_time_poly_end - eval_time_poly_start
+    logging.info('time to evaluate poly: {:f}'.format(eval_time_poly)
 
+    eval_time_poly_classical_start = perf_counter()
     cfun_poly_classical_evals = cfun_poly_classical.evaluate(xin)
     Z_poly_classical = cfun_poly_classical_evals.reshape(ngrid,ngrid).T
+    eval_time_poly_classical_end = perf_counter()
+    eval_time_poly_classical = eval_time_poly_classical_end - eval_time_poly_classical_start
+    logging.info('time to evaluate poly (classical): {:f}'.format(eval_time_poly_classical)
 
+    eval_time_se_start = perf_counter()
+    cfun_se.n_nys = -1
     cfun_se_evals = cfun_se.evaluate(xin)
     Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
+    eval_time_se_end = perf_counter()
+    eval_time_se = eval_time_se_end - eval_time_se_start
+    logging.info('time to evaluate se: {:f}'.format(eval_time_se)
 
-    cfun_nys_evals = cfun_nys.evaluate(xin)
+    eval_time_nys_start = perf_counter()
+    cfun_se.n_nys = 10000
+    cfun_nys_evals = cfun_se.evaluate(xin)
     Z_nys = cfun_nys_evals.reshape(ngrid,ngrid).T
+    eval_time_nys_end = perf_counter()
+    eval_time_nys = eval_time_nys_end - eval_time_nys_start
+    logging.info('time to evaluate nys: {:f}'.format(eval_time_nys)
 
     plt.clf()
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
