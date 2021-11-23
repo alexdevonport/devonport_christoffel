@@ -67,9 +67,8 @@ class KernelCfun:
         #     kl = self.compute_kl_divergence_lanczos()
         # else:
         #     kl = self.compute_kl_divergence_full()
-        klnew = self.compute_kl_divergence_lanczos()
-        kl = self.compute_kl_divergence_full()
-        print(kl,klnew)
+        kl = self.compute_kl_divergence_lanczos()
+        #kl = self.compute_kl_divergence_full()
         return kl
 
     def compute_empirical_stochastic_risk(self):
