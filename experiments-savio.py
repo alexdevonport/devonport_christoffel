@@ -89,17 +89,14 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
 
     cfun_nys = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2, n_nys=10000)
 
-    logging.info('polynomial (classical)')
-    pacbayes_cfun_classical(cfun_poly_classical, sampler, epsilon_target)
-
     logging.info('squared exponential (full)')
     pacbayes_cfun_iterative(
         cfun=cfun_se,
         sampler=sampler,
         epsilon_target=epsilon_target,
-        initialsamps=1200,
-        batchsize=200,
-        maxsamps=2000,
+        initialsamps=12000,
+        batchsize=2000,
+        maxsamps=20000,
         exact_stochastic_error=False)
 
     logging.info('squared exponential (Nystrom)')
@@ -122,16 +119,9 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         maxsamps=100000,
         exact_stochastic_error=False)
 
+    logging.info('polynomial (classical)')
+    pacbayes_cfun_classical(cfun_poly_classical, sampler, epsilon_target)
 
-    logging.info('squared exponential (full)')
-    pacbayes_cfun_iterative(
-        cfun=cfun_se,
-        sampler=sampler,
-        epsilon_target=epsilon_target,
-        initialsamps=12000,
-        batchsize=2000,
-        maxsamps=20000,
-        exact_stochastic_error=False)
 
     logging.info('Plotting data and contour')
 
