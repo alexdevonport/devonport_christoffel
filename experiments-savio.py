@@ -135,14 +135,14 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     Z_poly = cfun_poly_evals.reshape(ngrid,ngrid).T
     eval_time_poly_end = perf_counter()
     eval_time_poly = eval_time_poly_end - eval_time_poly_start
-    logging.info('time to evaluate poly: {:f}'.format(eval_time_poly)
+    logging.info('time to evaluate poly: {:f}'.format(eval_time_poly))
 
     eval_time_poly_classical_start = perf_counter()
     cfun_poly_classical_evals = cfun_poly_classical.evaluate(xin)
     Z_poly_classical = cfun_poly_classical_evals.reshape(ngrid,ngrid).T
     eval_time_poly_classical_end = perf_counter()
     eval_time_poly_classical = eval_time_poly_classical_end - eval_time_poly_classical_start
-    logging.info('time to evaluate poly (classical): {:f}'.format(eval_time_poly_classical)
+    logging.info('time to evaluate poly (classical): {:f}'.format(eval_time_poly_classical))
 
     eval_time_se_start = perf_counter()
     cfun_se.n_nys = -1
@@ -150,7 +150,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
     eval_time_se_end = perf_counter()
     eval_time_se = eval_time_se_end - eval_time_se_start
-    logging.info('time to evaluate se: {:f}'.format(eval_time_se)
+    logging.info('time to evaluate se: {:f}'.format(eval_time_se))
 
     eval_time_nys_start = perf_counter()
     cfun_se.n_nys = 10000
@@ -158,7 +158,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     Z_nys = cfun_nys_evals.reshape(ngrid,ngrid).T
     eval_time_nys_end = perf_counter()
     eval_time_nys = eval_time_nys_end - eval_time_nys_start
-    logging.info('time to evaluate nys: {:f}'.format(eval_time_nys)
+    logging.info('time to evaluate nys: {:f}'.format(eval_time_nys))
 
     plt.clf()
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
