@@ -45,10 +45,20 @@ nsamps_nys = 100
 
 print('Building Nystrom approximation')
 tic_nys = time.perf_counter()
+kmat = kfun(xs,xs)
+print(np.shape(kmat))
 kmm = kfun(xs[:nsamps_nys, :], xs[:nsamps_nys, :]) + sig0*np.eye(nsamps_nys)
 kmn = kfun(xs[:nsamps_nys, :], xs)
 kmnnm = np.matmul(kmn, kmn.T)
 toc_nys = time.perf_counter()
+e0 = sp.linalg.eigvalsh(kmat)
+e1 = sp.linalg.eigvalsh(kmm)*nsamps/nsamps_nys
+e2 = sp.linalg.eigvalsh(np.matmul(kmn,kmn.T), kmm)
+plt.plot(np.flip(e0),label='true evals')
+plt.plot(np.flip(e1),label='scaled kmm')
+plt.plot(np.flip(e2),label='generalized evp')
+plt.legend()
+plt.show()
 print('Nystrom approximation complete')
 
 #priorcov_nys = np.matmul(kmn.T, np.linalg.solve(kmm, kmn)) + sig0*np.eye(nsamps)

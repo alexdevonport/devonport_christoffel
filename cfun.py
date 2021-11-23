@@ -4,6 +4,7 @@ from scipy.stats import chi2
 import scipy.optimize as opt
 import scipy.special as sp
 from sklearn.preprocessing import PolynomialFeatures
+from kernel_eigvals_lanczos import kernel_eigvals_lanczos
 
 
 def klber(p,q):
@@ -32,7 +33,8 @@ def kl_centered_normal(cov0, cov1):
 
 
 class KernelCfun:
-    def __init__(self, kfun, threshold, noiselevel, delta, nx, n_nys=-1):
+    def __init__(self, kfun, threshold, noiselevel, delta, nx, n_nys=-1,
+            evals_frac=0.15, maxevals=1000):
         self.kfun = kfun
         self.noiselevel = noiselevel
         self.delta = delta
@@ -44,6 +46,8 @@ class KernelCfun:
         self.n_nys = n_nys
         self.raw_data_mean = 0
         self.raw_data_std = 1
+        self.evals_frac = evals_frac
+        self.maxevals = maxevals
 
 
     def add_data(self, newdata):
@@ -59,10 +63,13 @@ class KernelCfun:
 
     
     def compute_kl_divergence(self):
-        if self.n_nys > 0 and self.nsamps > self.n_nys:
-            kl = self.compute_kl_divergence_nys()
-        else:
-            kl = self.compute_kl_divergence_full()
+        # if self.evals_frac < 1.0:
+        #     kl = self.compute_kl_divergence_lanczos()
+        # else:
+        #     kl = self.compute_kl_divergence_full()
+        klnew = self.compute_kl_divergence_lanczos()
+        kl = self.compute_kl_divergence_full()
+        print(kl,klnew)
         return kl
 
     def compute_empirical_stochastic_risk(self):
@@ -93,23 +100,31 @@ class KernelCfun:
         self.kl_divergence = kl
         return kl
 
-
-    def compute_kl_divergence_nys(self, kmm_perturbation=1e-6):
-        kmm = self.kfun(self.data[:self.n_nys, :], self.data[:self.n_nys, :])
-        # For some kernels, kmm may not be positive definite due to numerical
-        # instabilities. It's necessary for kmm to be numerically positive
-        # definite in the generalized eigenvalue problem, so we add a small
-        # positive perturbation.
-        kmm = kmm + kmm_perturbation*np.eye(self.n_nys)
-        kmn = self.kfun(self.data[:self.n_nys, :], self.data)
-        kmnnm = np.matmul(kmn, kmn.T)
-        evals_nys = scipy.linalg.eigvalsh(np.matmul(kmn,kmn.T), kmm)
-        evec = np.concatenate((evals_nys, np.zeros((self.nsamps-self.n_nys,))))
+    def compute_kl_divergence_lanczos(self):
+        evec = kernel_eigvals_lanczos(self.kfun, self.data, self.nx, 
+                evals_frac=self.evals_frac, maxevals=self.maxevals) 
         ld = np.sum(np.log(1+self.noiselevel**(-1)*evec))
         tr = np.sum((1 + self.noiselevel**(-1)*evec)**(-1)) - self.nsamps
         kl = 0.5*(ld + tr)
         self.kl_divergence = kl
         return kl
+
+    # def compute_kl_divergence_nys(self, kmm_perturbation=1e-6):
+    #     kmm = self.kfun(self.data[:self.n_nys, :], self.data[:self.n_nys, :])
+    #     # For some kernels, kmm may not be positive definite due to numerical
+    #     # instabilities. It's necessary for kmm to be numerically positive
+    #     # definite in the generalized eigenvalue problem, so we add a small
+    #     # positive perturbation.
+    #     kmm = kmm + kmm_perturbation*np.eye(self.n_nys)
+    #     kmn = self.kfun(self.data[:self.n_nys, :], self.data)
+    #     kmnnm = np.matmul(kmn, kmn.T)
+    #     evals_nys = scipy.linalg.eigvalsh(np.matmul(kmn,kmn.T), kmm)
+    #     evec = np.concatenate((evals_nys, np.zeros((self.nsamps-self.n_nys,))))
+    #     ld = np.sum(np.log(1+self.noiselevel**(-1)*evec))
+    #     tr = np.sum((1 + self.noiselevel**(-1)*evec)**(-1)) - self.nsamps
+    #     kl = 0.5*(ld + tr)
+    #     self.kl_divergence = kl
+    #     return kl
 
 
     def epsilon_pacbayes(self, recompute_kl=True, exact_stochastic_error=True):
@@ -126,7 +141,7 @@ class KernelCfun:
 
         pbrhs = (kl + np.log((self.nsamps + 1)/self.delta)) / self.nsamps
         errbnd_stochastic = klber_ub(stochastic_err, pbrhs)
-        errbnd_mean = errbnd_stochastic / chi2.cdf(1,1)
+        errbnd_mean = errbnd_stochastic / (1-chi2.cdf(1,1))
         return errbnd_mean
 
 
@@ -207,6 +222,13 @@ class PolyCfun:
         self.raw_data_std = dstd
         return None
 
+    def classical_sample_bound(self, epsilon):
+        from math import ceil, log
+        t1 = log(4/self.delta)
+        t2 = sp.binom(self.nx+2*self.order, self.nx)*log(40/epsilon)
+        f = 5/epsilon
+        return ceil(f*(t1+t2))
+
     def compute_kl_divergence(self):
         pf = PolynomialFeatures(self.order)
         zxs = pf.fit_transform(self.data)
@@ -248,7 +270,7 @@ class PolyCfun:
         stochastic_err = np.mean(point_errors)
 
         errbnd_stochastic = klber_ub(stochastic_err, pbrhs)
-        errbnd_mean = errbnd_stochastic / chi2.cdf(1,1)
+        errbnd_mean = errbnd_stochastic / (1-chi2.cdf(1,1))
         return errbnd_mean
 
 
