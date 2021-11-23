@@ -27,6 +27,17 @@ def data_plot_limits(data, padfactor=0.1):
     yrange = np.array( [dmean[1] - 0.5*(1+padfactor)*drange[1], dmean[1] + 0.5*(1+padfactor)*drange[1]])
     return xrange, yrange
 
+def pacbayes_cfun_classical(cfun, sampler, epsilon_target):
+    total_start = perf_counter()
+    classical_sample_bound = cfun.classical_sample_bound(epsilon_target)
+    logging.info('classical requires {:d} samples'.format(classical_sample_bound))
+    new_samples_raw = sampler(classical_sample_bound)
+    cfun.add_data(new_samples_raw)
+    total_end = perf_counter()
+    total_time = (total_end - total_start)
+    logging.info('total computation time: {:.5g} s'.format(total_time))
+    return None
+
 def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsize, maxsamps=100000, exact_stochastic_error=True):
     # get the data dimension by taking a sample and examining its shape. We
     # expect the data to come in rows, so the second dimension will be the data
@@ -70,6 +81,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     nf = int(sp.binom(nx + k, nx))  # number of features (i.e. monomials)
     threshold_poly = nf / targeteps # based on Markov inequality estimate for (1-eps) threshold
     cfun_poly = PolyCfun(order=k, threshold=threshold_poly, noiselevel=sig0, delta=delta, nx=2)
+    cfun_poly_classical = PolyCfun(order=k, threshold=threshold_poly, noiselevel=sig0, delta=delta, nx=2)
 
     threshold_se = 0.25
     noiselevel_se=threshold_se/chi2.isf(.001,df=1)
@@ -77,6 +89,18 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
 
     cfun_nys = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2, n_nys=10000)
 
+    logging.info('polynomial (classical)')
+    pacbayes_cfun_classical(cfun_poly_classical, sampler, epsilon_target)
+
+    logging.info('squared exponential (full)')
+    pacbayes_cfun_iterative(
+        cfun=cfun_se,
+        sampler=sampler,
+        epsilon_target=epsilon_target,
+        initialsamps=1200,
+        batchsize=200,
+        maxsamps=2000,
+        exact_stochastic_error=False)
 
     logging.info('squared exponential (Nystrom)')
     pacbayes_cfun_iterative(
@@ -97,6 +121,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         batchsize=1000,
         maxsamps=100000,
         exact_stochastic_error=False)
+
 
     logging.info('squared exponential (full)')
     pacbayes_cfun_iterative(
@@ -127,6 +152,9 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     cfun_poly_evals = cfun_poly.evaluate(xin)
     Z_poly = cfun_poly_evals.reshape(ngrid,ngrid).T
 
+    cfun_poly_classical_evals = cfun_poly_classical.evaluate(xin)
+    Z_poly_classical = cfun_poly_classical_evals.reshape(ngrid,ngrid).T
+
     cfun_se_evals = cfun_se.evaluate(xin)
     Z_se = cfun_se_evals.reshape(ngrid,ngrid).T
 
@@ -136,6 +164,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     plt.clf()
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
     plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+    plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
     plt.contour(X,Y,Z_se, levels=[threshold_se], colors='red', label='SE')
     plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
 
