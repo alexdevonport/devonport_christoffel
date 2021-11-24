@@ -35,7 +35,7 @@ def kl_centered_normal(cov0, cov1):
 
 class KernelCfun:
     def __init__(self, kfun, threshold, noiselevel, delta, nx, n_nys=-1,
-            evals_frac=0.15, maxevals=1000):
+            evals_frac=0.15, maxevals=300):
         self.kfun = kfun
         self.noiselevel = noiselevel
         self.delta = delta
