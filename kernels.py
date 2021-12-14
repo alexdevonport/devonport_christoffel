@@ -1,6 +1,6 @@
 import numpy as np
 
-def kfun_se(xs, ys, sig=1/3):
+def kfun_se(xs, ys, sig=1/4):
     if len(np.shape(xs)) == 1:
         nxs = np.shape(xs)[0]
         xs = xs.reshape(1,nxs)
@@ -9,7 +9,7 @@ def kfun_se(xs, ys, sig=1/3):
         ys = ys.reshape(1,nys)
     return np.exp(-np.linalg.norm(xs[:,np.newaxis]-ys, axis=-1)**2/(2*sig**2))
 
-def kfun_se_col(xs, i, sig=1/3):
+def kfun_se_col(xs, i, sig=1/4):
     if len(np.shape(xs)) == 1:
         nxs = np.shape(xs)[0]
         xs = xs.reshape(1,nxs)

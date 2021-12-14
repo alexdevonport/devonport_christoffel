@@ -1,0 +1,22 @@
+2021-11-23 15:42:31,570: Experiment #1: Duffing oscillator
+2021-11-23 15:42:31,571: squared exponential (full)
+2021-11-23 15:42:31,571: iter, nsamps, kldiv, eps, time (s)
+2021-11-23 15:42:45,657: done sampling
+2021-11-23 15:42:45,659: entering lanczos
+2021-11-23 15:42:45,659: evals to compute: 1000
+Traceback (most recent call last):
+  File "experiments-savio.py", line 194, in <module>
+    experiment_name='duffing')
+  File "experiments-savio.py", line 100, in comparison_experiment
+    exact_stochastic_error=False)
+  File "experiments-savio.py", line 62, in pacbayes_cfun_iterative
+    epsilon_current = cfun.epsilon_pacbayes(exact_stochastic_error=exact_stochastic_error)
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 134, in epsilon_pacbayes
+    kl = self.compute_kl_divergence()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 71, in compute_kl_divergence
+    kl = self.compute_kl_divergence_lanczos()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 106, in compute_kl_divergence_lanczos
+    evals_frac=self.evals_frac, maxevals=self.maxevals) 
+  File "/global/home/users/alex_devonport/devonport_christoffel/kernel_eigvals_lanczos.py", line 45, in kernel_eigvals_lanczos
+    eigs_overapprox = np.ones(ns) * eigs_op[0]
+NameError: name 'eigs_op' is not defined

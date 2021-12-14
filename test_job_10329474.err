@@ -1,0 +1,17 @@
+2021-11-23 12:01:21,140: Experiment #1: Duffing oscillator
+2021-11-23 12:01:21,141: squared exponential (full)
+2021-11-23 12:01:21,142: iter, nsamps, kldiv, eps, time (s)
+2021-11-23 12:01:46,736: done sampling
+2021-11-23 12:01:46,737: entering lanczos
+2021-11-23 12:01:46,738: evals to compute: 100
+2021-11-23 12:02:36,375: max & min evals: 1678.07, 27.4159
+2021-11-23 12:02:36,378: 0, 30000, 91305,3,75.236
+2021-11-23 12:02:40,688: done sampling
+2021-11-23 12:02:40,689: entering lanczos
+2021-11-23 12:02:40,689: evals to compute: 100
+2021-11-23 12:03:52,442: max & min evals: 1959.22, 32.1973
+2021-11-23 12:03:52,445: 1, 35000, 1.0932e+05,3.01,76.067
+2021-11-23 12:03:56,677: done sampling
+2021-11-23 12:03:56,678: entering lanczos
+2021-11-23 12:03:56,678: evals to compute: 100
+slurmstepd: error: *** JOB 10329474 ON n0180.savio2 CANCELLED AT 2021-11-23T12:05:07 ***

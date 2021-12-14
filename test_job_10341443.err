@@ -1,0 +1,120 @@
+2021-11-29 09:08:18,359: Experiment #1: Duffing oscillator
+2021-11-29 09:08:18,361: squared exponential (full)
+2021-11-29 09:08:18,361: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 09:08:35,045: done sampling
+2021-11-29 09:08:35,046: entering lanczos
+2021-11-29 09:08:35,047: evals to compute: 500
+2021-11-29 09:09:50,120: max & min evals: 1669.56, 8.43986e-05
+2021-11-29 09:09:50,124: 0, 30000, 676.02,0.0867,91.762
+2021-11-29 09:09:50,124: total computation time: 91.763 s
+2021-11-29 09:09:50,124: polynomial
+2021-11-29 09:09:50,124: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 09:09:51,363: done sampling
+2021-11-29 09:09:51,447: 0, 2000, 168.67,0.331,1.3219
+2021-11-29 09:09:52,177: done sampling
+2021-11-29 09:09:52,226: 1, 3000, 167.47,0.234,0.778
+2021-11-29 09:09:52,964: done sampling
+2021-11-29 09:09:53,025: 2, 4000, 169.14,0.187,0.7994
+2021-11-29 09:09:53,766: done sampling
+2021-11-29 09:09:53,834: 3, 5000, 169.17,0.155,0.80812
+2021-11-29 09:09:54,588: done sampling
+2021-11-29 09:09:54,670: 4, 6000, 168.94,0.134,0.8358
+2021-11-29 09:09:55,498: done sampling
+2021-11-29 09:09:55,590: 5, 7000, 168.55,0.119,0.9204
+2021-11-29 09:09:56,420: done sampling
+2021-11-29 09:09:56,543: 6, 8000, 168.49,0.106,0.95248
+2021-11-29 09:09:57,494: done sampling
+2021-11-29 09:09:57,609: 7, 9000, 168.03,0.0967,1.0657
+2021-11-29 09:09:57,609: total computation time: 7.4851 s
+2021-11-29 09:09:57,609: polynomial (classical)
+2021-11-29 09:09:57,610: classical requires 70307 samples
+2021-11-29 09:10:35,825: total computation time: 38.215 s
+2021-11-29 09:10:35,826: Plotting data and contour
+2021-11-29 09:10:36,016: time to evaluate poly: 0.104025
+2021-11-29 09:10:36,217: time to evaluate poly (classical): 0.201019
+2021-11-29 09:18:56,090: time to evaluate se: 499.867789
+2021-11-29 09:19:36,868: time to evaluate nys: 40.763051
+experiments-savio.py:164: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:165: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
+experiments-savio.py:166: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+experiments-savio.py:167: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
+2021-11-29 09:19:37,417: Experiment #2: Quadrotor (x,h)
+2021-11-29 09:19:37,422: squared exponential (full)
+2021-11-29 09:19:37,423: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 09:19:40,937: done sampling
+2021-11-29 09:19:40,938: entering lanczos
+2021-11-29 09:19:40,938: evals to compute: 500
+2021-11-29 09:20:57,227: max & min evals: 1993.08, 8.31581e-06
+2021-11-29 09:20:57,274: 0, 30000, 565.27,0.0749,79.851
+2021-11-29 09:20:57,274: total computation time: 79.852 s
+2021-11-29 09:20:57,275: polynomial
+2021-11-29 09:20:57,275: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 09:20:58,050: done sampling
+2021-11-29 09:20:58,089: 0, 2000, 42.912,0.145,0.81337
+2021-11-29 09:20:58,722: done sampling
+2021-11-29 09:20:58,758: 1, 3000, 42.968,0.107,0.66878
+2021-11-29 09:20:59,436: done sampling
+2021-11-29 09:20:59,477: 2, 4000, 43.065,0.0872,0.71934
+2021-11-29 09:20:59,477: total computation time: 2.2024 s
+2021-11-29 09:20:59,477: polynomial (classical)
+2021-11-29 09:20:59,479: classical requires 14587 samples
+2021-11-29 09:21:01,576: total computation time: 2.0984 s
+2021-11-29 09:21:01,577: Plotting data and contour
+2021-11-29 09:21:01,827: time to evaluate poly: 0.144618
+2021-11-29 09:21:01,886: time to evaluate poly (classical): 0.059437
+2021-11-29 09:29:09,646: time to evaluate se: 487.759085
+2021-11-29 09:29:51,892: time to evaluate nys: 42.243369
+experiments-savio.py:164: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:165: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
+experiments-savio.py:166: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+experiments-savio.py:167: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
+2021-11-29 09:29:52,258: Experiment #3: Traffic (last 2)
+2021-11-29 09:29:52,265: squared exponential (full)
+2021-11-29 09:29:52,267: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 09:29:58,848: done sampling
+2021-11-29 09:29:58,850: entering lanczos
+2021-11-29 09:29:58,850: evals to compute: 500
+2021-11-29 09:31:19,837: max & min evals: 1066.03, 0.000341963
+2021-11-29 09:31:19,877: 0, 30000, 753.7,0.095,87.61
+2021-11-29 09:31:19,877: total computation time: 87.611 s
+2021-11-29 09:31:19,877: polynomial
+2021-11-29 09:31:19,877: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 09:31:21,008: done sampling
+2021-11-29 09:31:21,061: 0, 2000, 147.26,0.288,1.1836
+2021-11-29 09:31:21,995: done sampling
+2021-11-29 09:31:22,037: 1, 3000, 148.62,0.202,0.97593
+2021-11-29 09:31:22,984: done sampling
+2021-11-29 09:31:23,031: 2, 4000, 149.47,0.159,0.9936
+2021-11-29 09:31:23,976: done sampling
+2021-11-29 09:31:24,036: 3, 5000, 150.19,0.133,1.005
+2021-11-29 09:31:25,054: done sampling
+2021-11-29 09:31:25,121: 4, 6000, 150.07,0.114,1.0842
+2021-11-29 09:31:26,629: done sampling
+2021-11-29 09:31:26,777: 5, 7000, 150.33,0.1,1.6545
+2021-11-29 09:31:27,900: done sampling
+2021-11-29 09:31:28,013: 6, 8000, 150.62,0.0904,1.2366
+2021-11-29 09:31:28,015: total computation time: 8.1376 s
+2021-11-29 09:31:28,015: polynomial (classical)
+2021-11-29 09:31:28,015: classical requires 70307 samples
+2021-11-29 09:31:43,754: total computation time: 15.739 s
+2021-11-29 09:31:43,756: Plotting data and contour
+2021-11-29 09:31:44,063: time to evaluate poly: 0.218389
+2021-11-29 09:31:44,341: time to evaluate poly (classical): 0.260248
+2021-11-29 09:40:03,236: time to evaluate se: 498.876080
+2021-11-29 09:40:49,831: time to evaluate nys: 46.586549
+experiments-savio.py:164: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:165: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
+experiments-savio.py:166: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+experiments-savio.py:167: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')

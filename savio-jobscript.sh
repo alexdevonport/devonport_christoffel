@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=christoffel
 #SBATCH --account=fc_control
-#SBATCH --partition=savio3_bigmem
+#SBATCH --partition=savio2_bigmem
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --cpus-per-task=1

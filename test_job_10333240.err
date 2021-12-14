@@ -1,0 +1,321 @@
+2021-11-24 10:18:26,459: Experiment #1: Duffing oscillator
+2021-11-24 10:18:26,460: squared exponential (full)
+2021-11-24 10:18:26,461: iter, nsamps, kldiv, eps, time (s)
+2021-11-24 10:18:43,497: done sampling
+2021-11-24 10:18:43,498: entering lanczos
+2021-11-24 10:18:43,498: evals to compute: 400
+2021-11-24 10:19:47,082: max & min evals: 1703.08, 0.00150696
+2021-11-24 10:19:47,085: 0, 30000, 970.21,0.118,80.625
+2021-11-24 10:19:50,044: done sampling
+2021-11-24 10:19:50,044: entering lanczos
+2021-11-24 10:19:50,045: evals to compute: 400
+2021-11-24 10:21:16,715: max & min evals: 1999.86, 0.00176993
+2021-11-24 10:21:16,720: 1, 35000, 1084.9,0.113,89.635
+2021-11-24 10:21:19,656: done sampling
+2021-11-24 10:21:19,657: entering lanczos
+2021-11-24 10:21:19,657: evals to compute: 400
+2021-11-24 10:23:11,011: max & min evals: 2279.28, 0.00203833
+2021-11-24 10:23:11,016: 2, 40000, 1224.1,0.111,114.3
+2021-11-24 10:23:14,070: done sampling
+2021-11-24 10:23:14,071: entering lanczos
+2021-11-24 10:23:14,071: evals to compute: 400
+2021-11-24 10:25:40,154: max & min evals: 2556.95, 0.00233739
+2021-11-24 10:25:40,160: 3, 45000, 1402,0.113,149.14
+2021-11-24 10:25:43,388: done sampling
+2021-11-24 10:25:43,393: entering lanczos
+2021-11-24 10:25:43,394: evals to compute: 400
+2021-11-24 10:28:54,206: max & min evals: 2838.03, 0.00261838
+2021-11-24 10:28:54,224: 4, 50000, 1604.3,0.116,194.06
+2021-11-24 10:28:57,337: done sampling
+2021-11-24 10:28:57,338: entering lanczos
+2021-11-24 10:28:57,338: evals to compute: 400
+2021-11-24 10:32:49,008: max & min evals: 3128.36, 0.00287212
+2021-11-24 10:32:49,016: 5, 55000, 1823.5,0.119,234.79
+2021-11-24 10:32:52,248: done sampling
+2021-11-24 10:32:52,249: entering lanczos
+2021-11-24 10:32:52,249: evals to compute: 400
+2021-11-24 10:37:19,341: max & min evals: 3406.76, 0.00316597
+2021-11-24 10:37:19,350: 6, 60000, 2098.4,0.124,270.33
+2021-11-24 10:37:22,406: done sampling
+2021-11-24 10:37:22,407: entering lanczos
+2021-11-24 10:37:22,407: evals to compute: 400
+2021-11-24 10:42:42,254: max & min evals: 3682.79, 0.00344688
+2021-11-24 10:42:42,262: 7, 65000, 2401,0.13,322.91
+2021-11-24 10:42:45,331: done sampling
+2021-11-24 10:42:45,331: entering lanczos
+2021-11-24 10:42:45,331: evals to compute: 400
+2021-11-24 10:48:41,851: max & min evals: 3959.26, 0.00373509
+2021-11-24 10:48:41,857: 8, 70000, 2746.2,0.137,359.6
+2021-11-24 10:48:45,013: done sampling
+2021-11-24 10:48:45,014: entering lanczos
+2021-11-24 10:48:45,014: evals to compute: 400
+2021-11-24 10:55:43,983: max & min evals: 4238.08, 0.00400125
+2021-11-24 10:55:43,990: 9, 75000, 3110.4,0.144,422.13
+2021-11-24 10:55:47,213: done sampling
+2021-11-24 10:55:47,213: entering lanczos
+2021-11-24 10:55:47,213: evals to compute: 400
+2021-11-24 11:03:51,073: max & min evals: 4518.67, 0.00425209
+2021-11-24 11:03:51,084: 10, 80000, 3496.3,0.151,487.09
+2021-11-24 11:03:54,384: done sampling
+2021-11-24 11:03:54,386: entering lanczos
+2021-11-24 11:03:54,386: evals to compute: 400
+2021-11-24 11:12:39,320: max & min evals: 4792.08, 0.00448531
+2021-11-24 11:12:39,352: 11, 85000, 3898,0.157,528.27
+2021-11-24 11:12:42,597: done sampling
+2021-11-24 11:12:42,598: entering lanczos
+2021-11-24 11:12:42,598: evals to compute: 400
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+Exception in thread Thread-37:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-34:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-31:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-28:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+Exception in thread Thread-25:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-22:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 17, in __init__
+    util._flush_std_streams()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/util.py", line 404, in _flush_std_streams
+    sys.stderr.flush()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-19:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+Exception in thread Thread-16:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-13:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+Exception in thread Thread-10:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+OMP: Warning #190: Forking a process while a parallel region is active is potentially unsafe.
+Exception in thread Thread-7:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 412, in _handle_workers
+    pool._maintain_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 248, in _maintain_pool
+    self._repopulate_pool()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/pool.py", line 241, in _repopulate_pool
+    w.start()
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/process.py", line 112, in start
+    self._popen = self._Popen(self)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/context.py", line 277, in _Popen
+    return Popen(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/multiprocessing/popen_fork.py", line 70, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory
+
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/global/so/var/spool/slurmd/job10333240/slurm_script: line 16: 102412 Killed                  python3 experiments-savio.py
+slurmstepd: error: Detected 3270 oom-kill event(s) in step 10333240.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

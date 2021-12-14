@@ -1,0 +1,59 @@
+2021-12-14 11:20:20,793: Experiment #1: Duffing oscillator
+2021-12-14 11:20:20,797: squared exponential (full)
+2021-12-14 11:20:20,797: iter, nsamps, kldiv, eps, time (s)
+2021-12-14 11:20:38,107: done sampling
+2021-12-14 11:20:38,108: entering lanczos
+2021-12-14 11:20:38,108: evals to compute: 1000
+2021-12-14 11:22:26,792: max & min evals: 1128.67, 7.68026e-11
+/global/home/users/alex_devonport/devonport_christoffel/cfun.py:146: RuntimeWarning: divide by zero encountered in log
+  union_bound_term = 2/self.nsamps*np.log(np.pi**2*i_iter**2/(6*self.delta))
+2021-12-14 11:22:26,799: 0, 20000, 620.9,-inf,126
+2021-12-14 11:22:26,799: total computation time: 126 s
+2021-12-14 11:22:26,799: polynomial
+2021-12-14 11:22:26,799: iter, nsamps, kldiv, eps, time (s)
+2021-12-14 11:22:28,545: done sampling
+/global/home/users/alex_devonport/devonport_christoffel/cfun.py:276: RuntimeWarning: divide by zero encountered in log
+  union_bound_term = 2/self.nsamps*np.log(np.pi**2*i_iter**2/(6*self.delta))
+2021-12-14 11:22:28,614: 0, 2000, 166.71,-inf,1.8146
+2021-12-14 11:22:28,614: total computation time: 1.815 s
+2021-12-14 11:22:28,614: polynomial (classical)
+2021-12-14 11:22:28,614: classical requires 70307 samples
+2021-12-14 11:23:32,233: total computation time: 63.618 s
+2021-12-14 11:23:32,234: Plotting data and contour
+2021-12-14 11:23:32,456: time to evaluate poly: 0.101895
+2021-12-14 11:23:32,630: time to evaluate poly (classical): 0.173607
+2021-12-14 11:29:17,684: time to evaluate se: 345.053852
+2021-12-14 11:30:10,693: time to evaluate nys: 53.007988
+experiments-savio.py:164: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:165: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
+experiments-savio.py:166: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+experiments-savio.py:167: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
+2021-12-14 11:30:11,207: Experiment #2: Quadrotor (x,h)
+2021-12-14 11:30:11,208: squared exponential (full)
+2021-12-14 11:30:11,208: iter, nsamps, kldiv, eps, time (s)
+2021-12-14 11:30:14,659: done sampling
+2021-12-14 11:30:14,659: entering lanczos
+2021-12-14 11:30:14,659: evals to compute: 1000
+2021-12-14 11:32:04,659: max & min evals: 781.468, 4.28168e-08
+/global/home/users/alex_devonport/devonport_christoffel/cfun.py:146: RuntimeWarning: divide by zero encountered in log
+  union_bound_term = 2/self.nsamps*np.log(np.pi**2*i_iter**2/(6*self.delta))
+2021-12-14 11:32:04,662: 0, 20000, 773.84,-inf,113.45
+2021-12-14 11:32:04,662: total computation time: 113.45 s
+2021-12-14 11:32:04,662: polynomial
+2021-12-14 11:32:04,663: iter, nsamps, kldiv, eps, time (s)
+2021-12-14 11:32:05,373: done sampling
+/global/home/users/alex_devonport/devonport_christoffel/cfun.py:276: RuntimeWarning: divide by zero encountered in log
+  union_bound_term = 2/self.nsamps*np.log(np.pi**2*i_iter**2/(6*self.delta))
+2021-12-14 11:32:05,389: 0, 2000, 42.731,-inf,0.72604
+2021-12-14 11:32:05,389: total computation time: 0.72629 s
+2021-12-14 11:32:05,389: polynomial (classical)
+2021-12-14 11:32:05,389: classical requires 14587 samples
+2021-12-14 11:32:08,190: total computation time: 2.8009 s
+2021-12-14 11:32:08,190: Plotting data and contour
+2021-12-14 11:32:08,370: time to evaluate poly: 0.082872
+2021-12-14 11:32:08,438: time to evaluate poly (classical): 0.066934
+slurmstepd: error: *** JOB 10582350 ON n0160.savio2 CANCELLED AT 2021-12-14T11:37:25 ***

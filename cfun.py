@@ -35,7 +35,7 @@ def kl_centered_normal(cov0, cov1):
 
 class KernelCfun:
     def __init__(self, kfun, threshold, noiselevel, delta, nx, n_nys=-1,
-            evals_frac=0.15, maxevals=300):
+            evals_frac=0.15, maxevals=1000):
         self.kfun = kfun
         self.noiselevel = noiselevel
         self.delta = delta
@@ -129,7 +129,7 @@ class KernelCfun:
     #     return kl
 
 
-    def epsilon_pacbayes(self, recompute_kl=True, exact_stochastic_error=True):
+    def epsilon_pacbayes(self, i_iter, recompute_kl=True, exact_stochastic_error=True):
         if recompute_kl:
             kl = self.compute_kl_divergence()
             self.kl_divergence = kl
@@ -143,7 +143,8 @@ class KernelCfun:
 
         pbrhs = (kl + np.log((self.nsamps + 1)/self.delta)) / self.nsamps
         errbnd_stochastic = klber_ub(stochastic_err, pbrhs)
-        errbnd_mean = errbnd_stochastic / (1-chi2.cdf(1,1))
+        union_bound_term = 2/self.nsamps*np.log(np.pi**2*i_iter**2/(6*self.delta))
+        errbnd_mean = (errbnd_stochastic + union_bound_term) / (1-chi2.cdf(1,1))
         return errbnd_mean
 
 
@@ -246,7 +247,7 @@ class PolyCfun:
     def classical_pac_sample_size(self, eps):
         return None
 
-    def epsilon_pacbayes(self, recompute_kl=True):
+    def epsilon_pacbayes(self, i_iter, recompute_kl=True):
 
         pf = PolynomialFeatures(self.order)
         zxs = pf.fit_transform(self.data)
@@ -272,7 +273,8 @@ class PolyCfun:
         stochastic_err = np.mean(point_errors)
 
         errbnd_stochastic = klber_ub(stochastic_err, pbrhs)
-        errbnd_mean = errbnd_stochastic / (1-chi2.cdf(1,1))
+        union_bound_term = 2/self.nsamps*np.log(np.pi**2*i_iter**2/(6*self.delta))
+        errbnd_mean = (errbnd_stochastic + union_bound_term) / (1-chi2.cdf(1,1))
         return errbnd_mean
 
 

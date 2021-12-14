@@ -1,0 +1,18 @@
+2021-11-23 11:42:47,464: Experiment #1: Duffing oscillator
+2021-11-23 11:42:47,465: squared exponential (full)
+2021-11-23 11:42:47,465: iter, nsamps, kldiv, eps, time (s)
+2021-11-23 11:43:14,598: done sampling
+Traceback (most recent call last):
+  File "experiments-savio.py", line 194, in <module>
+    experiment_name='duffing')
+  File "experiments-savio.py", line 100, in comparison_experiment
+    exact_stochastic_error=False)
+  File "experiments-savio.py", line 62, in pacbayes_cfun_iterative
+    epsilon_current = cfun.epsilon_pacbayes(exact_stochastic_error=exact_stochastic_error)
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 133, in epsilon_pacbayes
+    kl = self.compute_kl_divergence()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 70, in compute_kl_divergence
+    kl = self.compute_kl_divergence_lanczos()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 103, in compute_kl_divergence_lanczos
+    logging.info('entering lanczos')
+NameError: name 'logging' is not defined

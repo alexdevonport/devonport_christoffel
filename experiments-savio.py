@@ -59,9 +59,9 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
         # Try to apply a keyword to use the stochastic error upper bound if
         # possible. If not, just run the method directly.
         try:
-            epsilon_current = cfun.epsilon_pacbayes(exact_stochastic_error=exact_stochastic_error)
+            epsilon_current = cfun.epsilon_pacbayes(i+1,exact_stochastic_error=exact_stochastic_error)
         except TypeError:
-            epsilon_current = cfun.epsilon_pacbayes()
+            epsilon_current = cfun.epsilon_pacbayes(i+1)
 
         iter_time_stop = perf_counter()
         iter_time = (iter_time_stop - iter_time_start)
@@ -73,7 +73,7 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
     return None
 
 
-def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10):
+def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10, kfun=kfun_se, threshold_kernel=0.25):
 
     targeteps = 0.05
 
@@ -84,9 +84,8 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     cfun_poly = PolyCfun(order=k, threshold=threshold_poly, noiselevel=sig0, delta=delta, nx=2)
     cfun_poly_classical = PolyCfun(order=k, threshold=threshold_poly, noiselevel=sig0, delta=delta, nx=2)
 
-    threshold_se = 0.25
-    noiselevel_se=threshold_se/chi2.isf(.001,df=1)
-    cfun_se = KernelCfun(kfun=kfun_se, threshold=threshold_se, noiselevel=noiselevel_se, delta=delta, nx=2)
+    noiselevel_se=threshold_kernel/chi2.isf(.001,df=1)
+    cfun_se = KernelCfun(kfun=kfun, threshold=threshold_kernel, noiselevel=noiselevel_se, delta=delta, nx=2)
 
 
     logging.info('squared exponential (full)')
@@ -94,7 +93,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         cfun=cfun_se,
         sampler=sampler,
         epsilon_target=epsilon_target,
-        initialsamps=30000,
+        initialsamps=20000,
         batchsize=5000,
         maxsamps=200000,
         exact_stochastic_error=False)
@@ -153,7 +152,7 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     logging.info('time to evaluate se: {:f}'.format(eval_time_se))
 
     eval_time_nys_start = perf_counter()
-    cfun_se.n_nys = 10000
+    cfun_se.n_nys = 2000
     cfun_nys_evals = cfun_se.evaluate(xin)
     Z_nys = cfun_nys_evals.reshape(ngrid,ngrid).T
     eval_time_nys_end = perf_counter()
@@ -164,8 +163,8 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
     plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
     plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
-    plt.contour(X,Y,Z_se, levels=[threshold_se], colors='red', label='SE')
-    plt.contour(X,Y,Z_nys, levels=[threshold_se], colors='blue', label='SE Nystrom')
+    plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+    plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
 
     current_time = datetime.datetime.now()
     timestr = current_time.strftime('%Y-%m-%d-%H%M')
@@ -184,27 +183,37 @@ logging.basicConfig(
         format='%(asctime)s: %(message)s',
         level=logging.INFO)
 
-epsilon_target = 0.05
+#epsilon_target = 0.05
+epsilon_target = 0.10
+
+from functools import partial
 
 logging.info('Experiment #1: Duffing oscillator')
+
+kfun_duff = partial(kfun_se, sig=1/4)
 comparison_experiment(sampler=sample_oscillator_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
+        kfun=kfun_duff,
         experiment_name='duffing')
 
+kfun_quad = partial(kfun_se, sig=1/4)
 logging.info('Experiment #2: Quadrotor (x,h)')
 comparison_experiment(sampler=sample_quadrotor_xh_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
+        kfun=kfun_quad,
         experiment_name='quadrotor', k=4)
 
+kfun_traf = partial(kfun_se, sig=1/4)
 logging.info('Experiment #3: Traffic (last 2)')
 comparison_experiment(sampler=sample_traffic_end_n,
         nx=2,
         epsilon_target=epsilon_target,
         delta=1e-9,
+        kfun=kfun_traf,
         experiment_name='traffic')
 
 

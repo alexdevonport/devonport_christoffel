@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "experiments-savio.py", line 12, in <module>
+    from cfun import KernelCfun, PolyCfun
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 7, in <module>
+    from kernel_eigvals_lanczos import kernel_eigvals_lanczos
+  File "/global/home/users/alex_devonport/devonport_christoffel/kernel_eigvals_lanczos.py", line 36
+    op = LinearOperator((ns,ns), matvec=kmat_op)
+     ^
+SyntaxError: invalid syntax

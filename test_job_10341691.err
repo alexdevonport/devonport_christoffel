@@ -1,0 +1,146 @@
+2021-11-29 10:46:58,707: Experiment #1: Duffing oscillator
+2021-11-29 10:46:58,709: squared exponential (full)
+2021-11-29 10:46:58,709: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 10:47:09,129: done sampling
+2021-11-29 10:47:09,130: entering lanczos
+2021-11-29 10:47:09,130: evals to compute: 500
+2021-11-29 10:47:45,057: max & min evals: 1122.83, 5.26892e-05
+2021-11-29 10:47:45,061: 0, 20000, 618.77,0.115,46.352
+2021-11-29 10:47:47,634: done sampling
+2021-11-29 10:47:47,635: entering lanczos
+2021-11-29 10:47:47,635: evals to compute: 500
+2021-11-29 10:48:39,741: max & min evals: 1397.96, 6.58817e-05
+2021-11-29 10:48:39,744: 1, 25000, 648.94,0.0982,54.683
+2021-11-29 10:48:39,744: total computation time: 101.04 s
+2021-11-29 10:48:39,745: polynomial
+2021-11-29 10:48:39,745: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 10:48:40,901: done sampling
+2021-11-29 10:48:41,026: 0, 2000, 165.51,0.328,1.2814
+2021-11-29 10:48:41,800: done sampling
+2021-11-29 10:48:41,842: 1, 3000, 166.27,0.234,0.81508
+2021-11-29 10:48:42,606: done sampling
+2021-11-29 10:48:42,666: 2, 4000, 166.33,0.184,0.82403
+2021-11-29 10:48:43,487: done sampling
+2021-11-29 10:48:43,561: 3, 5000, 167.14,0.154,0.89485
+2021-11-29 10:48:44,401: done sampling
+2021-11-29 10:48:44,484: 4, 6000, 166.72,0.133,0.92258
+2021-11-29 10:48:45,363: done sampling
+2021-11-29 10:48:45,453: 5, 7000, 166.85,0.117,0.9692
+2021-11-29 10:48:46,423: done sampling
+2021-11-29 10:48:46,537: 6, 8000, 166.85,0.106,1.0839
+2021-11-29 10:48:47,490: done sampling
+2021-11-29 10:48:47,740: 7, 9000, 166.73,0.0969,1.1946
+2021-11-29 10:48:47,753: total computation time: 8.0085 s
+2021-11-29 10:48:47,755: polynomial (classical)
+2021-11-29 10:48:47,759: classical requires 70307 samples
+2021-11-29 10:49:22,692: total computation time: 34.936 s
+2021-11-29 10:49:22,693: Plotting data and contour
+2021-11-29 10:49:22,905: time to evaluate poly: 0.136919
+2021-11-29 10:49:23,101: time to evaluate poly (classical): 0.195778
+2021-11-29 10:54:36,142: time to evaluate se: 313.041052
+2021-11-29 10:55:28,080: time to evaluate nys: 51.928784
+experiments-savio.py:164: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:165: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
+experiments-savio.py:166: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+experiments-savio.py:167: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
+2021-11-29 10:55:28,712: Experiment #2: Quadrotor (x,h)
+2021-11-29 10:55:28,712: squared exponential (full)
+2021-11-29 10:55:28,712: iter, nsamps, kldiv, eps, time (s)
+2021-11-29 10:55:31,265: done sampling
+2021-11-29 10:55:31,265: entering lanczos
+2021-11-29 10:55:31,265: evals to compute: 500
+2021-11-29 10:56:07,286: max & min evals: 800.304, 0.00245038
+2021-11-29 10:56:07,297: 0, 20000, 825.64,0.147,38.584
+2021-11-29 10:56:08,582: done sampling
+2021-11-29 10:56:08,584: entering lanczos
+2021-11-29 10:56:08,584: evals to compute: 500
+2021-11-29 10:57:01,340: max & min evals: 1001.23, 0.00336759
+2021-11-29 10:57:01,352: 1, 25000, 928.19,0.133,54.055
+2021-11-29 10:57:02,673: done sampling
+2021-11-29 10:57:02,673: entering lanczos
+2021-11-29 10:57:02,673: evals to compute: 500
+2021-11-29 10:58:24,664: max & min evals: 1204.2, 0.00421785
+2021-11-29 10:58:24,670: 2, 30000, 1051.9,0.126,83.318
+2021-11-29 10:58:26,067: done sampling
+2021-11-29 10:58:26,067: entering lanczos
+2021-11-29 10:58:26,067: evals to compute: 500
+2021-11-29 11:00:08,959: max & min evals: 1400.22, 0.00525599
+2021-11-29 11:00:08,964: 3, 35000, 1225.3,0.125,104.29
+2021-11-29 11:00:10,512: done sampling
+2021-11-29 11:00:10,514: entering lanczos
+2021-11-29 11:00:10,514: evals to compute: 500
+2021-11-29 11:02:20,990: max & min evals: 1596.78, 0.00606539
+2021-11-29 11:02:20,996: 4, 40000, 1410.4,0.126,132.03
+2021-11-29 11:02:22,635: done sampling
+2021-11-29 11:02:22,652: entering lanczos
+2021-11-29 11:02:22,653: evals to compute: 500
+2021-11-29 11:05:10,919: max & min evals: 1792.14, 0.00703792
+2021-11-29 11:05:10,936: 5, 45000, 1659.1,0.131,169.94
+2021-11-29 11:05:12,642: done sampling
+2021-11-29 11:05:12,667: entering lanczos
+2021-11-29 11:05:12,667: evals to compute: 500
+2021-11-29 11:08:44,819: max & min evals: 1988.43, 0.00806479
+2021-11-29 11:08:44,832: 6, 50000, 1966.6,0.138,213.9
+2021-11-29 11:08:46,745: done sampling
+2021-11-29 11:08:46,747: entering lanczos
+2021-11-29 11:08:46,747: evals to compute: 500
+2021-11-29 11:13:02,245: max & min evals: 2183.31, 0.00916017
+2021-11-29 11:13:02,257: 7, 55000, 2345.3,0.148,257.42
+2021-11-29 11:13:04,157: done sampling
+2021-11-29 11:13:04,167: entering lanczos
+2021-11-29 11:13:04,168: evals to compute: 500
+2021-11-29 11:18:11,094: max & min evals: 2378.22, 0.0101045
+2021-11-29 11:18:11,101: 8, 60000, 2740.9,0.157,308.84
+2021-11-29 11:18:13,221: done sampling
+2021-11-29 11:18:13,247: entering lanczos
+2021-11-29 11:18:13,247: evals to compute: 500
+2021-11-29 11:23:55,763: max & min evals: 2573.98, 0.011004
+2021-11-29 11:23:55,831: 9, 65000, 3174.1,0.167,344.73
+2021-11-29 11:23:57,931: done sampling
+2021-11-29 11:23:57,933: entering lanczos
+2021-11-29 11:23:57,933: evals to compute: 500
+2021-11-29 11:30:44,062: max & min evals: 2767.19, 0.0117905
+2021-11-29 11:30:44,070: 10, 70000, 3618.7,0.175,408.24
+2021-11-29 11:30:46,411: done sampling
+2021-11-29 11:30:46,447: entering lanczos
+2021-11-29 11:30:46,449: evals to compute: 500
+2021-11-29 11:38:40,900: max & min evals: 2965.27, 0.0126223
+2021-11-29 11:38:40,908: 11, 75000, 4123,0.185,476.84
+2021-11-29 11:38:43,292: done sampling
+2021-11-29 11:38:43,318: entering lanczos
+2021-11-29 11:38:43,319: evals to compute: 500
+2021-11-29 11:47:38,495: max & min evals: 3158.6, 0.0136195
+2021-11-29 11:47:38,515: 12, 80000, 4740.1,0.198,537.6
+2021-11-29 11:47:41,275: done sampling
+2021-11-29 11:47:41,276: entering lanczos
+2021-11-29 11:47:41,276: evals to compute: 500
+2021-11-29 11:57:58,809: max & min evals: 3355.03, 0.0143724
+2021-11-29 11:57:58,822: 13, 85000, 5307.1,0.207,620.31
+2021-11-29 11:58:01,599: done sampling
+2021-11-29 11:58:01,635: entering lanczos
+2021-11-29 11:58:01,636: evals to compute: 500
+Traceback (most recent call last):
+  File "experiments-savio.py", line 208, in <module>
+    experiment_name='quadrotor', k=4)
+  File "experiments-savio.py", line 99, in comparison_experiment
+    exact_stochastic_error=False)
+  File "experiments-savio.py", line 62, in pacbayes_cfun_iterative
+    epsilon_current = cfun.epsilon_pacbayes(exact_stochastic_error=exact_stochastic_error)
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 134, in epsilon_pacbayes
+    kl = self.compute_kl_divergence()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 71, in compute_kl_divergence
+    kl = self.compute_kl_divergence_lanczos()
+  File "/global/home/users/alex_devonport/devonport_christoffel/cfun.py", line 106, in compute_kl_divergence_lanczos
+    evals_frac=self.evals_frac, maxevals=self.maxevals) 
+  File "/global/home/users/alex_devonport/devonport_christoffel/kernel_eigvals_lanczos.py", line 43, in kernel_eigvals_lanczos
+    kmat = kfun(xs, xs)
+  File "/global/home/users/alex_devonport/devonport_christoffel/kernels.py", line 10, in kfun_se
+    return np.exp(-np.linalg.norm(xs[:,np.newaxis]-ys, axis=-1)**2/(2*sig**2))
+  File "<__array_function__ internals>", line 6, in norm
+  File "/global/software/sl-7.x86_64/modules/langs/python/3.7/lib/python3.7/site-packages/numpy/linalg/linalg.py", line 2513, in norm
+    return sqrt(add.reduce(s, axis=axis, keepdims=keepdims))
+MemoryError: Unable to allocate array with shape (90000, 90000) and data type float64
