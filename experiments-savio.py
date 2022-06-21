@@ -17,7 +17,7 @@ from sampling import (sample_oscillator_n,
         sample_traffic_n,
         sample_traffic_end_n)
 
-def classical_pac(cfun, sampler, epsilon_targer, delta):
+def classical_pac(cfun, sampler, epsilon_target, delta):
     return None
 
 def data_plot_limits(data, padfactor=0.1):
@@ -87,17 +87,6 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     noiselevel_se=threshold_kernel/chi2.isf(.001,df=1)
     cfun_se = KernelCfun(kfun=kfun, threshold=threshold_kernel, noiselevel=noiselevel_se, delta=delta, nx=2)
 
-
-    logging.info('squared exponential (full)')
-    pacbayes_cfun_iterative(
-        cfun=cfun_se,
-        sampler=sampler,
-        epsilon_target=epsilon_target,
-        initialsamps=20000,
-        batchsize=5000,
-        maxsamps=200000,
-        exact_stochastic_error=False)
-
     logging.info('polynomial')
     pacbayes_cfun_iterative(
         cfun=cfun_poly,
@@ -110,6 +99,31 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
 
     logging.info('polynomial (classical)')
     pacbayes_cfun_classical(cfun_poly_classical, sampler, epsilon_target)
+
+    logging.info('squared exponential (full)')
+    pacbayes_cfun_iterative(
+        cfun=cfun_se,
+        sampler=sampler,
+        epsilon_target=epsilon_target,
+        initialsamps=20000,
+        batchsize=5000,
+        maxsamps=200000,
+        exact_stochastic_error=False)
+
+
+    logging.info('Computing a posteriori accuracy:')
+
+    xin_ap = sampler(46052)
+
+    cfun_poly_evals_ap = cfun_poly.evaluate(xin_ap)
+    ap_error_poly = np.mean(np.where(cfun_poly_evals_ap > threshold_poly,1,0))
+    cfun_poly_classical_evals_ap = cfun_poly_classical.evaluate(xin_ap)
+    ap_error_classical = np.mean(np.where(cfun_poly_classical_evals_ap > threshold_poly,1,0))
+    cfun_nys_evals_ap = cfun_se.evaluate(xin_ap)
+    ap_error_se = np.mean(np.where(cfun_nys_evals_ap > threshold_kernel,1,0))
+    logging.info('    poly (kernel)   : {:f}'.format(ap_error_poly))
+    logging.info('    poly (classical): {:f}'.format(ap_error_classical))
+    logging.info('    SE   (kernel)   : {:f}'.format(ap_error_se))
 
 
     logging.info('Plotting data and contour')
@@ -177,7 +191,7 @@ current_time = datetime.datetime.now()
 timestr = current_time.strftime('%Y-%m-%d-%H%M')
 logging.basicConfig(
         handlers=[
-            logging.FileHandler("./results/{:s}-experiments-savio.log".format(timestr)),
+            #logging.FileHandler("./results/{:s}-experiments-savio.log".format(timestr)),
             logging.StreamHandler()
         ],
         format='%(asctime)s: %(message)s',
