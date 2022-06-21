@@ -73,7 +73,7 @@ def pacbayes_cfun_iterative(cfun, sampler, epsilon_target, initialsamps, batchsi
     return None
 
 
-def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10, kfun=kfun_se, threshold_kernel=0.25):
+def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='exp', k=10, kfun=kfun_se, threshold_kernel=0.25, xname='$x$', yname='$y$'):
 
     targeteps = 0.05
 
@@ -87,6 +87,11 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     noiselevel_se=threshold_kernel/chi2.isf(.001,df=1)
     cfun_se = KernelCfun(kfun=kfun, threshold=threshold_kernel, noiselevel=noiselevel_se, delta=delta, nx=2)
 
+    logging.info('polynomial (classical)')
+    pacbayes_cfun_classical(cfun_poly_classical, sampler, epsilon_target)
+    classical_evals = cfun_poly_classical.evaluate(cfun_poly_classical.data_raw)
+    classical_max_eval = np.max(classical_evals)
+    logging.info('classical max cfun value: {:.5f}'.format(classical_max_eval))
 
     logging.info('squared exponential (full)')
     pacbayes_cfun_iterative(
@@ -108,8 +113,6 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
         maxsamps=100000,
         exact_stochastic_error=False)
 
-    logging.info('polynomial (classical)')
-    pacbayes_cfun_classical(cfun_poly_classical, sampler, epsilon_target)
 
 
     logging.info('Plotting data and contour')
@@ -162,9 +165,11 @@ def comparison_experiment(sampler, nx, epsilon_target, delta, experiment_name='e
     plt.clf()
     plt.plot(cfun_poly.data_raw[:,0],cfun_poly.data_raw[:,1],linestyle='none', marker='.')
     plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
-    plt.contour(X,Y,Z_poly_classical, levels=[threshold_poly], colors='black', label='Polynomial (classical)')
-    plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
-    plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
+    plt.contour(X,Y,Z_poly_classical, levels=[classical_max_eval], colors='black', label='Polynomial (classical)')
+    plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='blue', label='SE')
+    #plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='red', label='SE Nystrom')
+    plt.xlabel(xname)
+    plt.ylabel(yname)
 
     current_time = datetime.datetime.now()
     timestr = current_time.strftime('%Y-%m-%d-%H%M')
@@ -196,7 +201,8 @@ comparison_experiment(sampler=sample_oscillator_n,
         epsilon_target=epsilon_target,
         delta=1e-9,
         kfun=kfun_duff,
-        experiment_name='duffing')
+        experiment_name='duffing',
+        xname='$z$', yname='$y$')
 
 kfun_quad = partial(kfun_se, sig=1/4)
 logging.info('Experiment #2: Quadrotor (x,h)')
@@ -205,7 +211,8 @@ comparison_experiment(sampler=sample_quadrotor_xh_n,
         epsilon_target=epsilon_target,
         delta=1e-9,
         kfun=kfun_quad,
-        experiment_name='quadrotor', k=4)
+        experiment_name='quadrotor', k=4,
+        xname='$p_x$', yname='$p_h$')
 
 kfun_traf = partial(kfun_se, sig=1/4)
 logging.info('Experiment #3: Traffic (last 2)')
@@ -214,6 +221,7 @@ comparison_experiment(sampler=sample_traffic_end_n,
         epsilon_target=epsilon_target,
         delta=1e-9,
         kfun=kfun_traf,
-        experiment_name='traffic')
+        experiment_name='traffic',
+        xname='$x_5$', yname='$x_6$')
 
 

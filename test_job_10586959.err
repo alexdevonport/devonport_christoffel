@@ -1,0 +1,75 @@
+2021-12-17 16:16:23,905: Experiment #1: Duffing oscillator
+2021-12-17 16:16:23,906: polynomial (classical)
+2021-12-17 16:16:23,906: classical requires 70307 samples
+2021-12-17 16:17:24,741: total computation time: 60.834 s
+2021-12-17 16:17:25,371: classical max cfun value: 742753.78848
+2021-12-17 16:17:25,371: squared exponential (full)
+2021-12-17 16:17:25,371: iter, nsamps, kldiv, eps, time (s)
+2021-12-17 16:17:43,397: done sampling
+2021-12-17 16:17:43,398: entering lanczos
+2021-12-17 16:17:43,398: evals to compute: 1000
+2021-12-17 16:19:30,835: max & min evals: 1136, 7.82061e-11
+2021-12-17 16:19:30,838: 0, 20000, 620.68,0.122,125.47
+2021-12-17 16:19:35,570: done sampling
+2021-12-17 16:19:35,571: entering lanczos
+2021-12-17 16:19:35,571: evals to compute: 1000
+2021-12-17 16:22:11,071: max & min evals: 1413.98, 9.87242e-11
+2021-12-17 16:22:11,074: 1, 25000, 650.18,0.104,160.24
+2021-12-17 16:22:15,483: done sampling
+2021-12-17 16:22:15,484: entering lanczos
+2021-12-17 16:22:15,484: evals to compute: 1000
+2021-12-17 16:25:49,502: max & min evals: 1697.39, 1.20576e-10
+2021-12-17 16:25:49,504: 2, 30000, 675.5,0.0916,218.43
+2021-12-17 16:25:49,504: total computation time: 504.13 s
+2021-12-17 16:25:49,504: polynomial
+2021-12-17 16:25:49,505: iter, nsamps, kldiv, eps, time (s)
+2021-12-17 16:25:51,371: done sampling
+2021-12-17 16:25:51,414: 0, 2000, 165.64,0.39,1.9092
+2021-12-17 16:25:52,528: done sampling
+2021-12-17 16:25:52,584: 1, 3000, 167.76,0.282,1.1695
+2021-12-17 16:25:53,664: done sampling
+2021-12-17 16:25:53,729: 2, 4000, 167.58,0.22,1.1456
+2021-12-17 16:25:54,860: done sampling
+2021-12-17 16:25:54,936: 3, 5000, 166.68,0.182,1.2064
+2021-12-17 16:25:56,106: done sampling
+2021-12-17 16:25:56,190: 4, 6000, 166.94,0.157,1.254
+2021-12-17 16:25:57,301: done sampling
+2021-12-17 16:25:57,386: 5, 7000, 167.57,0.139,1.1949
+2021-12-17 16:25:58,455: done sampling
+2021-12-17 16:25:58,527: 6, 8000, 168.11,0.125,1.1417
+2021-12-17 16:25:59,636: done sampling
+2021-12-17 16:25:59,744: 7, 9000, 168.19,0.114,1.2159
+2021-12-17 16:26:00,888: done sampling
+2021-12-17 16:26:01,020: 8, 10000, 168.09,0.105,1.2763
+2021-12-17 16:26:02,159: done sampling
+2021-12-17 16:26:02,253: 9, 11000, 167.89,0.0971,1.233
+2021-12-17 16:26:02,253: total computation time: 12.749 s
+2021-12-17 16:26:02,254: Plotting data and contour
+2021-12-17 16:26:02,428: time to evaluate poly: 0.074851
+2021-12-17 16:26:02,611: time to evaluate poly (classical): 0.182062
+2021-12-17 16:40:46,383: time to evaluate se: 883.767944
+2021-12-17 16:41:59,813: time to evaluate nys: 73.418847
+experiments-savio.py:167: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly, levels=[threshold_poly], colors='green', label='Polynomial')
+experiments-savio.py:168: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_poly_classical, levels=[classical_max_eval], colors='black', label='Polynomial (classical)')
+experiments-savio.py:169: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_se, levels=[threshold_kernel], colors='red', label='SE')
+experiments-savio.py:170: UserWarning: The following kwargs were not used by contour: 'label'
+  plt.contour(X,Y,Z_nys, levels=[threshold_kernel], colors='blue', label='SE Nystrom')
+2021-12-17 16:42:00,225: Experiment #2: Quadrotor (x,h)
+2021-12-17 16:42:00,225: polynomial (classical)
+2021-12-17 16:42:00,226: classical requires 14587 samples
+2021-12-17 16:42:03,013: total computation time: 2.7873 s
+2021-12-17 16:42:03,111: classical max cfun value: 6.03462
+2021-12-17 16:42:03,111: squared exponential (full)
+2021-12-17 16:42:03,111: iter, nsamps, kldiv, eps, time (s)
+2021-12-17 16:42:06,524: done sampling
+2021-12-17 16:42:06,525: entering lanczos
+2021-12-17 16:42:06,525: evals to compute: 1000
+2021-12-17 16:43:55,430: max & min evals: 780.109, 5.83914e-08
+2021-12-17 16:43:55,443: 0, 20000, 784.63,0.147,112.33
+2021-12-17 16:43:56,571: done sampling
+2021-12-17 16:43:56,572: entering lanczos
+2021-12-17 16:43:56,572: evals to compute: 1000
+slurmstepd: error: *** JOB 10586959 ON n0285.savio2 CANCELLED AT 2021-12-17T16:46:31 ***

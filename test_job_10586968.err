@@ -1,0 +1,11 @@
+2021-12-17 16:50:53,239: Experiment #1: Duffing oscillator
+2021-12-17 16:50:53,240: polynomial (classical)
+2021-12-17 16:50:53,240: classical requires 70307 samples
+2021-12-17 16:51:55,437: total computation time: 62.197 s
+2021-12-17 16:51:56,096: classical max cfun value: 857.59384
+2021-12-17 16:51:56,097: squared exponential (full)
+2021-12-17 16:51:56,097: iter, nsamps, kldiv, eps, time (s)
+2021-12-17 16:52:12,728: done sampling
+2021-12-17 16:52:12,729: entering lanczos
+2021-12-17 16:52:12,729: evals to compute: 1000
+slurmstepd: error: *** JOB 10586968 ON n0285.savio2 CANCELLED AT 2021-12-17T16:52:22 ***
